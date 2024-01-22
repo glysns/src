@@ -1,0 +1,12 @@
+/.settings
+/target
+/.classpath
+/.factorypath
+/.project
+/logs
+/.sts4-cache
+.idea
+/.idea
+*.iml
+*.class
+*.jar
