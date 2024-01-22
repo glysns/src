@@ -1,0 +1,92 @@
+<html>
+  <body>
+    <div id="app">
+     
+      <label>R$ Aplicado</label>
+      <input v-model="valorAplicado" :readonly="exibeCalculo" />
+      <label>% Luco</label>
+      <input v-model="margemLucro" :readonly="exibeCalculo" />
+      
+      <button
+        v-on:click="calcularAplicacao()"
+        type="button"
+        :disabled="exibeCalculo"
+      >
+        Calcular
+      </button>
+      <button v-on:click="limpar()" type="button">Limpar</button>
+
+      <div v-if="exibeCalculo">
+        <p>
+          <b>
+            Segue simulação de aplicação do valor de R$ {{ valorAplicado}} com
+            margem de lucro de {{ margemLucro}}%, resultando em um lucro de R$
+            {{ valorLucro }} e rentabilidade de R$ {{ valorCorrigido }}
+          </b>
+        </p>
+      </div>
+     
+      <p>Visualuze o objeto existente nesta página</p>
+      Objeto JSON: {{ umObjeto }} -> este recurso é chamado como binding entre o
+      html e js
+
+      <p>Visualuze atributos do objeto (tenha noções de JSON)</p>
+      ID: {{ umObjeto.id }} NOME: {{ umObjeto.nome }}
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const { ref, reactive, createApp } = Vue
+      createApp({
+        setup() {
+          //atributos
+          const valorAplicado = ref(0);
+          const margemLucro =  ref(0);
+          const valorLucro = ref(0);
+          const valorCorrigido = ref(0);
+          const exibeCalculo = ref(false);
+          const umObjeto= reactive({ id: 123, nome: "Sou um objeto JSON" });
+          
+          //metodos
+          const calcularAplicacao = () => {
+            //SUBSTITUINDO this por .value
+            const dadosInvalidos =
+              valorAplicado.value == "0" || margemLucro.value == "0";
+
+            if (dadosInvalidos) {
+              alert("Valor Aplicado e Margem de Lucro, são obrigatórios");
+              return;
+            }
+            console.log(
+              "realizando o cálculo para definir o luco e o valor corrigido"
+            );
+            valorLucro.value = (valorAplicado.value * margemLucro.value) / 100;
+            valorCorrigido.value =
+              Number(valorAplicado.value) + Number(valorLucro.value);
+
+            exibeCalculo.value = true;
+          }
+           
+          const limpar = () => {
+            exibeCalculo.value = false;
+            (valorAplicado.value = 0),
+              (margemLucro.value = 0),
+              (valorLucro.value = 0),
+              (valorCorrigido.value = 0);
+
+              console.log('resete dos dados')
+          }
+          return {
+            valorAplicado,
+            margemLucro,
+            valorLucro,
+            valorCorrigido,
+            exibeCalculo,
+            umObjeto,
+            calcularAplicacao,
+            limpar
+          }
+        }
+      }).mount('#app')
+    </script>  
+  </body>
+</html>

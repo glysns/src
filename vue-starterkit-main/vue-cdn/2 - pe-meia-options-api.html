@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto PÉ de Meia - Options API</title>
+  </head>
+  <body>
+    <div id="app">
+      <label>R$ Aplicado</label>
+
+      <!-- v-model faz o que conhecemos como binding entre o html e o js-->
+      <!-- o que são esses : no prefixo da propriedade readonly ? -->
+      <input v-model="valorAplicado" :readonly="exibeCalculo" />
+      <label>% Luco</label>
+      <input v-model="margemLucro" :readonly="exibeCalculo" />
+
+      <!-- v-on:xxx é uma marcação dos possível métodos que um elemento pode realizar -->
+      <button
+        v-on:click="calcularAplicacao()"
+        type="button"
+        :disabled="exibeCalculo"
+      >
+        Calcular
+      </button>
+      <button v-on:click="limpar()" type="button">Limpar</button>
+
+      <div v-if="exibeCalculo">
+        <p>
+          <b>
+            Segue simulação de aplicação do valor de R$ {{ valorAplicado}} com
+            margem de lucro de {{ margemLucro}}%, resultando em um lucro de R$
+            {{ valorLucro }} e rentabilidade de R$ {{ valorCorrigido }}
+          </b>
+        </p>
+      </div>
+
+      <p>Visualiza o objeto existente nesta página</p>
+      Objeto JSON: {{ umObjeto }} -> este recurso é chamado como binding entre o
+      html e js
+
+      <p>Visualuze atributos do objeto (tenha noções de JSON)</p>
+      ID: {{ umObjeto.id }} NOME: {{ umObjeto.nome }}
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+      createApp({
+        data() {
+          //variaveis da intancia do objeto que representam dados mediante a interação do usuário
+          return {
+            valorAplicado: 0,
+            margemLucro: 0,
+            valorLucro: 0,
+            valorCorrigido: 0,
+            exibeCalculo: false,
+            umObjeto: { id: 123, nome: "Sou um objeto JSON" },
+          };
+        },
+
+        //área destinada aos métodos que serão executados através dos elementos da sua página
+        methods: {
+          calcularAplicacao() {
+            //estude sobre palavras reservadas no JS, iniciando por let, var, const
+            //conceitos parecidos com Java em rsrsr
+
+            const dadosInvalidos =
+              this.valorAplicado == "0" || this.margemLucro == "0";
+
+            if (dadosInvalidos) {
+              alert("Valor Aplicado e Margem de Lucro, são obrigatórios");
+              return;
+            }
+
+            console.log(
+              "realizando o cálculo para definir o luco e o valor corrigido"
+            );
+            // this é uma palavra reservada muito utilizada na Options API
+            this.valorLucro = (this.valorAplicado * this.margemLucro) / 100;
+
+            //this.valorCorrigido=this.valorAplicado + this.valorLucro
+            this.valorCorrigido =
+              Number(this.valorAplicado) + Number(this.valorLucro);
+
+            this.exibeCalculo = true;
+          },
+          limpar() {
+            this.exibeCalculo = false;
+            (this.valorAplicado = 0),
+              (this.margemLucro = 0),
+              (this.valorLucro = 0),
+              (this.valorCorrigido = 0);
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
