@@ -1,0 +1,26 @@
+<html>
+<body>
+  <div id="app">
+    <input id="nome"/>
+    <input id="sobrenome">
+    <button id="botaoCadastro" onclick="cadastrar()" type="button">Cadastrar</button>
+    <button id="botaoCancelar" type="button">Limpar</button>
+    <p id="mensagem"></p>
+  </div>
+
+  <script>
+    //metodos disponiveis para serem acionados via eventos dos elementos da pagina
+    function cadastrar() {
+        let nome = document.getElementById('nome').value
+        let sobrenome = document.getElementById('sobrenome').value
+        document.getElementById('mensagem').innerHTML = 'Bem-vindo ' + nome + ' ' + sobrenome;
+    }
+
+    //vincular os metodos aos elementos da pagina pelo id
+    document.getElementById('botaoCancelar').onclick = function() {alert('Como você faria para limpar ou restaurar a tela ?')};
+    
+  </script>
+
+</body>
+
+</html>
