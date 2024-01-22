@@ -1,0 +1,190 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Menttorya</title>
+      
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="assets/images/favicon.ico" />
+      
+      <link rel="stylesheet" href="assets/css/backend.min.css?v=1.0.1">
+      <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+      <link rel="stylesheet" href="assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+      <link rel="stylesheet" href="assets/vendor/remixicon/fonts/remixicon.css">  
+      <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+  <body id="app" class="fixed-top-navbar top-nav  ">
+    <!-- loader Start -->
+    <div id="loading">
+          <div id="loading-center">
+          </div>
+    </div>
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+      <div class="iq-top-navbar">
+         
+      </div>
+      <div class="content-page">
+    <div class="content-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="navbar-breadcrumb">
+                            <h1 class="mb-1">Menttorya</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+            
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">                
+                <div class="event-content">
+                    <div id="event1" class="tab-pane fade active show">
+                        <div class="row">                                
+                            <div class="col-lg-4 col-md-6" v-for="i in eventos" :key="i.tag">
+                                <div class="card card-block card-stretch card-height">
+                                    <div class="card-body rounded event-detail event-detail-success">
+                                        <div class="d-flex align-items-top justify-content-between">
+                                            <div>
+                                                <h4 class="mb-2 mr-4">{{i.tag}}</h4> 
+                                                <h4 class="mb-2 mr-4">{{i.titulo}}</h4>                                        
+                                                <p class="mb-2 text-success font-weight-500 text-uppercase"><i class="las la-user-friends pr-2"></i>Em Grupo</p>
+                                                <p class="mb-4 card-description">{{i.descricao}}</p>
+                                                <div class="d-flex align-items-center pt-4">
+                                                    <a href="#" class="btn btn-success mr-3 px-xl-4">{{i.valor}}</a>
+                                                    <a @click="reservar()" href="#" class="btn btn-outline-success copy px-xl-4" data-extra-toggle="copy" title="Copy to clipboard" data-toggle="tooltip"><i class="las la-link pr-2"></i>Reservar</a>
+                                                    <a href="#" class="btn btn-outline-success d-none turn-on px-xl-4">Turn On</a>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                            <h4 class="card-title">Account Setting</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="acc-edit">
+                            <form>
+                                <div class="form-group">
+                                    <label for="uname">Nome:</label>
+                                    <input type="text" class="form-control" id="uname" v-model="cadastro.nome">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email" v-model="cadastro.email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="uname">CPF:</label>
+                                    <input type="text" class="form-control" id="uname" v-model="cadastro.cpf">
+                                </div>
+                               
+                              
+                                <button class="btn btn-primary" @click.prevent="agendar()">Submit</button>
+                                <button  class="btn iq-bg-danger">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        </div>
+    </div>
+    <!-- Wrapper End-->
+    <footer class="iq-footer">
+        <div class="container-fluid container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="backend/privacy-policy.html">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="backend/terms-of-service.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 text-right">
+                    Copyright 2023 <a href="https://www.izapay.com.br">IzaPay - Digytal</a> All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Backend Bundle JavaScript -->
+    <script src="assets/js/backend-bundle.min.js"></script>
+    <!-- Chart Custom JavaScript -->
+    <script src="assets/js/customizer.js"></script>
+    <!-- app JavaScript -->
+    <script src="assets/js/app.js"></script>  </body>
+    <script >
+        const { createApp } = Vue;
+        createApp({
+          data() {
+            return {
+              eventos:[],
+              cadastro:{'nome':'Marcos Paulo', 'email':'glysns@hotmail.com', 'cpf':'45260139003'}
+            };
+          },
+          mounted() {
+            this.list();
+        },
+          methods: {
+            async list () {
+                    const response = await axios.get('https://iza-saas-api-production.up.railway.app/public/eventos');
+                    this.eventos = response.data.body;
+                
+            },
+            async agendar () {
+                const data =  {
+  "numeroDocumento": "JSRM010124",
+  "titulo": "JSRM - Sintaxe e Convenções (1h)",
+  "descricao": "JSRM - Sintaxe e Convenções (1h)",
+  "observacao": "Confira a data e hora e marque na sua agenda",
+  "valor": 1.99,
+  "favorecido": {
+      "cpfCnpj": this.cadastro.cpf,
+      "nome": this.cadastro.nome,
+      "email": this.cadastro.email
+    },
+  "formasPagamento": [
+    {
+      "meioPagamento": "PIXP",
+      "valorOriginal": 1.99,
+      "taxaPagamento": 0.0,
+      "valorPago": 1.99
+    }
+  ]
+}
+
+                axios.post('https://iza-saas-api-production.up.railway.app/public/eventos/reserva', data, {
+    headers: {
+        'empresa': '2',
+        'organizacao': '2'
+    }
+})
+.then((res) => console.log(res.data))
+.catch((err) => console.error(err));
+                  
+                                
+                alert('reserva realizada')
+            }
+          },
+        }).mount("#app");
+      </script>
+</html>

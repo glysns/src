@@ -1,0 +1,37 @@
+export default defineNuxtConfig({
+    css: [
+        '@/assets/vendor/aos/aos.css',
+        '@/assets/vendor/bootstrap/css/bootstrap.min.css',
+        '@/assets/vendor/bootstrap-icons/bootstrap-icons.css',
+        '@/assets/css/style.css'    
+    ],
+     app: {
+         head: {
+             meta: [
+            { charset: 'utf-8' },
+            { 'http-equiv': 'pragma', content: 'no-cache' },
+            { 'http-equiv': 'cache-control', content: 'no-cache' },
+            { 'http-equiv': 'expires', content: '0' },
+            { content: 'telephone=no', name: 'format-detection' }
+            ],
+            script: [
+                { type:"text/javascript", body: true, src: '~/assets/vendor/purecounter/purecounter_vanilla.js' },
+                { type:"text/javascript", body: true, src: '~/assets/js/main.js' },
+            ]
+        }
+       }
+  })
+
+
+  app: {
+        head: {
+            meta: [{ charset: 'utf-8' }],
+            script: [
+                { type:"text/javascript", body: true, src: '~/assets/js/backend-bundle.min.js' },
+                { type:"text/javascript", body: true, src: '~/assets/js/customizer.js' },
+                { type:"text/javascript", body: true, src: '~/assets/js/app.js' }
+            ]
+        }
+    }
+
+    citocinas inflamatorias
