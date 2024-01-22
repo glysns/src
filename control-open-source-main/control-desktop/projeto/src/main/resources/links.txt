@@ -1,0 +1,158 @@
+https://www.flaticon.com/free-icon/revenue_10112730?term=company&related_id=10112730
+
+https://icon-icons.com/pt/icones/busca/?filtro=ecommerce
+
+https://icon-icons.com/pt/download/124608/PNG/48/
+https://icon-icons.com/pt/icone/animal-de-estima%C3%A7%C3%A3o-loja-constru%C3%A7%C3%A3o-animal/124625
+https://icon-icons.com/pt/icone/colar-animais-c%C3%A3o-gato/124668
+https://icon-icons.com/pt/icone/animais-animal-animais-de-estima%C3%A7%C3%A3o-badge-adesivo/108548
+https://icon-icons.com/pt/icone/pet-animais-pedigree-badge-pawprint/124629
+https://icon-icons.com/pt/icone/animais-animal-documento-hist%C3%B3ria-papel/124630
+https://icon-icons.com/pt/icone/animais-animal-badge-pata-pawprint/124631
+https://icon-icons.com/pt/pack/Vector-Flat-Gradient/2063
+https://icon-icons.com/pt/icone/com%C3%A9rcio-eletr%C3%B4nico-online-compras/192443
+https://icon-icons.com/pt/download/192444/ICO/32/
+https://icon-icons.com/pt/pack/Design-and-Development---Filled-line/3179
+
+https://www.baeldung.com/spring-properties-file-outside-jar
+
+https://springframework.guru/spring-external-configuration-data/
+
+https://www.taogenjia.com/2022/02/14/Spring-Boot-Externalized-Configuration/
+
+https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html
+
+https://www.baeldung.com/properties-with-spring
+
+https://www.youtube.com/watch?v=cKYlzVDuU84
+
+https://www.flaticon.com/free-icon/top-up_1651925?related_id=1652000&origin=search
+https://www.flaticon.com/free-icon/low-price_6713826
+
+https://www.flaticon.com/free-icon/salary_6997756?term=money+date&page=1&position=58&origin=search&related_id=6997756
+templates legais
+https://iqonic.design/product-category/admin-templates/filter_session/70OG2Y1W0O/
+
+
+
+formas de pagamento
+https://www.flaticon.com/free-icon/wallet_584026?term=money&page=1&position=58&origin=search&related_id=584026
+
+
+{
+  "data": "2022-07-20",
+  "estabelecimento": 1,
+  "cliente": 2,
+  "valorTotal": 123.4,
+  "chaveAcesso": "8978978669",
+  "protocoloAutorizacao": "755665",
+  "status": "EM_DIGITACAO",
+  "itens": [
+    {
+      "produto": 1,
+      "quantidade": 2,
+      "valor": 4.55,
+      "subtotal": 9.80
+    }
+  ]
+}
+
+{
+  "data": "2022-07-20",
+  "estabelecimento": 1,
+  "cliente": 2,
+  "chaveAcesso": "8978978669",
+  "protocoloAutorizacao": "755665",
+  "status": "EM_DIGITACAO",
+  "itens": [
+    {
+      "produto": 1,
+      "quantidade": 2,
+      "valor": 4.55,
+      "subtotal": 9.80
+    }
+  ]
+}
+
+txtDesconto.setMascara("#,##0.00");
+		txtDesconto.setFormato("#,##0.00");
+		
+		private void novo() {
+		if (chkNovo.isSelected()) {
+			criar();
+		} else
+			sair();
+	}
+	private void definir(SSCampoNumero txt, Color cor) {
+		txt.setEditavel(false);
+		txt.setComponenteCorFonte(cor);
+		txt.setComponenteNegrito(true);
+		txt.setColunas(6);
+		txt.setRotuloPosicao(SSPosicaoRotulo.ESQUERDA);
+		txt.setFormato(Formato.MOEDA);
+	}
+	
+	txtIPIAliquota.addAlteracaoListener(new AlteracaoListener() {
+                public void alteracaoListener(AlteracaoEvento e) {
+                    txtIPIAliquota_alteracaoListener(e);
+                }
+            });
+            
+            private void txtIPIAliquota_alteracaoListener(AlteracaoEvento e) {
+        try {
+            BigDecimal baseCalculo = BigDecimal.ZERO,
+                aliquota = BigDecimal.ZERO;
+            
+            if (txtIPIAliquota.getValue() != null)
+                aliquota = txtIPIAliquota.getBigDecimal();
+            
+            BigDecimal valor = baseCalculo.multiply(aliquota).divide(BigDecimal.valueOf(100), 2, BigDecimal.ROUND_CEILING);
+            
+        }catch(Exception ex) {
+            SSMensagem.erro(ex);
+        }
+    }
+    
+    txtCfop.addKeyListener(new KeyAdapter() {
+                public void keyReleased(KeyEvent e) {
+                    txtCfop_keyReleased(e);
+                }
+            });
+            
+            private void txtCfop_keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == e.VK_F4 && !e.isAltDown() && !e.isControlDown() && !e.isShiftDown()) {
+            txtCfop_pesquisaListener(null);
+        }
+    }
+    
+    
+    this.txtCfop.addValidacaoListener(new ValidacaoListener() {
+                public void validacaoListener(ValidacaoEvento e) {
+                    FrmCadastroProduto.this.txtCfop_validacaoListener(e);
+                }
+            });
+        this.txtCfop.addKeyListener(new KeyAdapter() {
+                public void keyReleased(KeyEvent e) {
+                    FrmCadastroProduto.this.txtCfop_keyReleased(e);
+                }
+            });
+        this.txtCfop.addPesquisaListener(new PesquisaListener() {
+                public void pesquisaListener(PesquisaEvento e) {
+                    FrmCadastroProduto.this.txtCfop_pesquisaListener(e);
+                }
+            });
+            
+            private void txtCfop_keyReleased(KeyEvent e) {
+        if ((e.getKeyCode() == 115) && (!e.isAltDown()) &&
+            (!e.isControlDown()) && (!e.isShiftDown())) {
+            txtCfop_pesquisaListener(null);
+        }
+    }
+
+    private void txtCfop_validacaoListener(ValidacaoEvento e) {
+        if ((this.txtCfop.getText() == null) ||
+            (this.txtCfop.getText().trim().length() == 0)) {
+            return;
+        }
+    }
+            

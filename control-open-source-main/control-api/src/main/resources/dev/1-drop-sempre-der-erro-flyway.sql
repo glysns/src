@@ -1,0 +1,20 @@
+drop schema apl_financeiro cascade ;
+drop schema apl_contrato cascade ;
+drop schema apl_cadastro cascade ;
+drop schema apl_acesso cascade ;
+drop schema apl_param cascade ;
+DELETE FROM public.flyway_schema_history;
+
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Consultoria contábil', 'R', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Contabilidade escritório', 'R', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Contabilidade online', 'R', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Palestras', 'R', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Assessoria', 'R', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Elboração de IRPF', 'R', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Material escritório', 'D', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Internet fixa', 'D', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Internet móvel', 'D', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Taxi', 'D', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Despachante', 'D', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Impostos', 'D', false, true, false, 1);
+INSERT INTO apl_acesso.tab_aplicacao (nome, tipo, is_area, is_natureza, is_principal, organizacao_id) VALUES('Escritorio Central', NULL, true, false, false, 1);
