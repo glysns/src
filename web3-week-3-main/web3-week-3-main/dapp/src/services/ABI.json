@@ -1,0 +1,164 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "choice",
+				"type": "uint256"
+			}
+		],
+		"name": "addVote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "option1",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "option2",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timeToVote",
+				"type": "uint256"
+			}
+		],
+		"name": "addVoting",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "currentVoting",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getCurrentVoting",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "option1",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votes1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "option2",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votes2",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxDate",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Voting",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "votes",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "choice",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "date",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "votings",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "option1",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "votes1",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "option2",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "votes2",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "maxDate",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
