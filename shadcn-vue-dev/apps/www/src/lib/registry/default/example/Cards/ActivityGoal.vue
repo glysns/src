@@ -1,0 +1,109 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+import { Minus, Plus } from 'lucide-vue-next'
+import { VisStackedBar, VisXYContainer } from '@unovis/vue'
+import { useData } from 'vitepress'
+import { Button } from '@/lib/registry/default/ui/button'
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/lib/registry/default/ui/card'
+import { themes } from '@/lib/registry/themes'
+import { useConfigStore } from '@/stores/config'
+
+const { isDark } = useData()
+const cfg = useConfigStore()
+const theme = computed(() => themes.find(theme => theme.name === cfg.config.value.theme))
+
+const goal = ref(350)
+
+type Data = typeof data[number]
+const data = [
+  { goal: 400 },
+  { goal: 300 },
+  { goal: 200 },
+  { goal: 300 },
+  { goal: 200 },
+  { goal: 278 },
+  { goal: 189 },
+  { goal: 239 },
+  { goal: 300 },
+  { goal: 200 },
+  { goal: 278 },
+  { goal: 189 },
+  { goal: 349 },
+]
+</script>
+
+<template>
+  <Card>
+    <CardHeader class="pb-4">
+      <CardTitle class="text-base">
+        Move Goal
+      </CardTitle>
+      <CardDescription>Set your daily activity goal.</CardDescription>
+    </CardHeader>
+    <CardContent class="pb-2">
+      <div class="flex items-center justify-center space-x-2">
+        <Button
+          variant="outline"
+          size="icon"
+          class="h-8 w-8 shrink-0 rounded-full"
+          :disabled="goal <= 200"
+          @click="goal -= 10"
+        >
+          <Minus class="h-4 w-4" />
+          <span class="sr-only">Decrease</span>
+        </Button>
+        <div class="flex-1 text-center">
+          <div class="text-5xl font-bold tracking-tighter">
+            {{ goal }}
+          </div>
+          <div class="text-[0.70rem] uppercase text-muted-foreground">
+            Calories/day
+          </div>
+        </div>
+        <Button
+          variant="outline"
+          size="icon"
+          class="h-8 w-8 shrink-0 rounded-full"
+          :disabled="goal >= 400"
+          @click="goal += 10 "
+        >
+          <Plus class="h-4 w-4" />
+          <span class="sr-only">Increase</span>
+        </Button>
+      </div>
+      <div class="my-3 h-[60px]">
+        <VisXYContainer
+          :data="data"
+          height="60px"
+          :style="{
+            'opacity': 0.2,
+            '--theme-primary': `hsl(${
+              theme?.cssVars[isDark ? 'dark' : 'light'].primary
+            })`,
+          }"
+        >
+          <VisStackedBar
+            :x="(d: Data, i :number) => i"
+            :y="(d: Data) => d.goal"
+            color="var(--theme-primary)"
+            :bar-padding="0.1"
+            :rounded-corners="0"
+          />
+        </VisXYContainer>
+      </div>
+    </CardContent>
+    <CardFooter>
+      <Button class="w-full">
+        Set Goal
+      </Button>
+    </CardFooter>
+  </Card>
+</template>
