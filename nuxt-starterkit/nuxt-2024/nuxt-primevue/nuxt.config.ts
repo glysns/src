@@ -5,8 +5,9 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module'
 ],
 primevue: {
+  options: { ripple: true },
   components: {
-      include: ['Button', 'DataTable']
+      exclude: ['Editor']
   }
-}
+},
 })
